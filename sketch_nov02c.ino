@@ -98,12 +98,6 @@
             strip1.show();
             delay (40);
           }
-          
-     
-           
-            
-       
-    
     }
 
       // Fill the dots one after the other with a color
