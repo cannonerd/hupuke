@@ -40,17 +40,15 @@
       // all pixels show the same color:
       //(colour), wait
 
-      strip0.setBrightness(30);
-      strip1.setBrightness(30);
-      strip2.setBrightness(30);
+     
       
-      colorWipe(strip0.Color(0, 0, 50), 50); // blue
-      colorWipe1(strip1.Color(0, 50, 0), 50); // green
-      colorWipe2(strip2.Color(50, 0, 0), 50); // red
+     // colorWipe(); 
+      colorWipe1(); 
+     // colorWipe2(); 
     }
      
     // Fill the dots one after the other with a color
-    void colorWipe(uint32_t cb, uint8_t wait) {
+    void colorWipe() {
       uint32_t r =strip0.Color(50, 0, 0);
       uint32_t g =strip0.Color(0, 50, 0);
       uint32_t b =strip0.Color(0, 0, 50);
@@ -88,20 +86,33 @@
 
 
      // Fill the dots one after the other with a color
-    void colorWipe1(uint32_t c, uint8_t wait) {
-    
-          strip1.setPixelColor(0, c);
-          strip1.show();
+    void colorWipe1() {
+         
+          for (int i = 20; i < 150; i++){
+            strip1.setPixelColor(0, strip1.Color(0,i,0));
+            strip1.show();
+            delay (40);
+          }
+          for (int i = 150; i > 20; i--){
+            strip1.setPixelColor(0, strip1.Color(0,i,0));
+            strip1.show();
+            delay (40);
+          }
+          
+     
+           
+            
+       
     
     }
 
       // Fill the dots one after the other with a color
-    void colorWipe2(uint32_t c, uint8_t wait) {
-          uint32_t r =strip2.Color(50, 0, 0);
-          uint32_t g =strip2.Color(0, 50, 0);
-          uint32_t b =strip2.Color(0, 0, 50);
-          uint32_t none =strip2.Color(0, 0, 0);
-          unsigned long currentStrip2 = millis();
+    void colorWipe2() {
+      uint32_t r =strip2.Color(50, 0, 0);
+      uint32_t g =strip2.Color(0, 50, 0);
+      uint32_t b =strip2.Color(0, 0, 50);
+      uint32_t none =strip2.Color(0, 0, 0);
+      unsigned long currentStrip2 = millis();
 
       if(currentStrip2 - prewStrip2 > interval2) {
         // save the last time you blinked the LED 
