@@ -12,7 +12,7 @@
     //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
     //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
     Adafruit_NeoPixel strip0 = Adafruit_NeoPixel(7, PIN0, NEO_GRB + NEO_KHZ800);
-    Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(1, PIN1, NEO_GRB + NEO_KHZ800);
+    Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(6, PIN1, NEO_GRB + NEO_KHZ800);
     Adafruit_NeoPixel strip2 = Adafruit_NeoPixel(3, PIN2, NEO_GRB + NEO_KHZ800);
 
     long prewStrip0 = 0;
@@ -42,9 +42,9 @@
 
      
       
-     // colorWipe(); 
+      colorWipe(); 
       colorWipe1(); 
-     // colorWipe2(); 
+      colorWipe2(); 
     }
      
     // Fill the dots one after the other with a color
@@ -87,17 +87,17 @@
 
      // Fill the dots one after the other with a color
     void colorWipe1() {
-         
-          for (int i = 20; i < 150; i++){
-            strip1.setPixelColor(0, strip1.Color(0,i,0));
+       uint32_t r =strip2.Color(255, 0, 0);
+      uint32_t g =strip2.Color(0, 255, 0);
+      uint32_t b =strip2.Color(0, 0, 255);
+         strip1.setPixelColor(0, b);
+          strip1.setPixelColor(1, b);
+           strip1.setPixelColor(2, r);
+             strip1.setPixelColor(3, b);
+           strip1.setPixelColor(4, r);
+             strip1.setPixelColor(5, g);
             strip1.show();
-            delay (40);
-          }
-          for (int i = 150; i > 20; i--){
-            strip1.setPixelColor(0, strip1.Color(0,i,0));
-            strip1.show();
-            delay (40);
-          }
+          
     }
 
       // Fill the dots one after the other with a color
@@ -143,3 +143,4 @@
      }
  
   }
+
